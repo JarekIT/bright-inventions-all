@@ -10,16 +10,13 @@ export class VehiclesService {
     // init values
     this.allVehicles = createVehicles();
     this.moveVehicleIntervalInMs = 1000;
-    this.distanceTravelInOneIntervalInKm = 25;
+    this.distanceTravelInOneIntervalInKm = 50;
 
-    const interval: NodeJS.Timeout = setInterval(() => {
+    setInterval(() => {
       this.moveAllAliveVehicles();
     }, this.moveVehicleIntervalInMs);
 
     console.table(this.allVehicles);
-
-    // for Heroku Dyno Hours - stop interval after 30 min
-    setTimeout(() => clearInterval(interval), 30 * 60 * 1000);
   }
 
   private readonly allVehicles: IVehicle[];
