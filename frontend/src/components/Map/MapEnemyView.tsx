@@ -25,7 +25,7 @@ const MapEnemyView: React.FC<MapEnemyViewProps> = ({ enemy, setSelected }) => {
       />
       <Marker
         icon={{
-          url: "images/military-vehicle.svg",
+          url: "images/military-vehicle-1.svg",
           scaledSize: { width: 48, height: 48 },
         }}
         position={{ lat: enemy.lat, lng: enemy.lng }}
