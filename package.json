@@ -1,0 +1,17 @@
+{
+  "name": "bright-inventions-jarekit-all",
+  "version": "0.0.1",
+  "author": "JarekIT",
+  "private": true,
+  "scripts": {
+    "devAll": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm start",
+    "client": "cd frontend && npm start",
+    "installServer": "cd backend && npm install",
+    "installClient": "cd frontend && npm install",
+    "installAll": "concurrently \"npm run installServer\" \"npm run installClient\""
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.1"
+  }
+}
