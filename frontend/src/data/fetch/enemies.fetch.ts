@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { backupApi } from "./backup.api";
+
 import { EnemyDAO } from "../../interfaces/types";
 
 require("dotenv").config();
@@ -9,8 +11,11 @@ export const fetchAllEnemies = async (
   isLoadedEnemies: boolean,
   setIsLoadedEnemies: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
+  const API: string | undefined = process.env.REACT_APP_API_URL;
+
   await axios
-    .get(`${process.env.REACT_APP_API_URL}enemies`)
+    // if there is a problem with .env API, use the backup API
+    .get(`${API || backupApi}enemies`)
     .then((res) => {
       setAllEnemies(res.data);
     })
