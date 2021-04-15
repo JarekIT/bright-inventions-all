@@ -2,12 +2,12 @@ import axios from "axios";
 
 import { backupApi } from "./backup.api";
 
-import { EnemyDAO } from "../../interfaces/types";
+import { EnemyDTO } from "../../interfaces/types";
 
 require("dotenv").config();
 
 export const fetchAllEnemies = async (
-  setAllEnemies: React.Dispatch<React.SetStateAction<EnemyDAO[]>>,
+  setAllEnemies: React.Dispatch<React.SetStateAction<EnemyDTO[]>>,
   isLoadedEnemies: boolean,
   setIsLoadedEnemies: React.Dispatch<React.SetStateAction<boolean>>
 ) => {

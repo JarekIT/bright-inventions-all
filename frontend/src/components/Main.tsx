@@ -5,7 +5,7 @@ import Table from "./Table/Table";
 import Filter from "./Filter/Filter";
 import Waiting from "./Waiting/Waiting";
 
-import { EnemyDAO, VehicleDAO } from "../interfaces/types";
+import { EnemyDTO, VehicleDTO } from "../interfaces/types";
 
 import { fetchAllEnemies } from "../data/fetch/enemies.fetch";
 import { fetchAllVehicles } from "../data/fetch/vehicles.fetch";
@@ -13,9 +13,9 @@ import { fetchAllVehicles } from "../data/fetch/vehicles.fetch";
 require("dotenv").config();
 
 const Main = () => {
-  const [allEnemies, setAllEnemies] = useState<EnemyDAO[]>([]);
-  const [allVehiclesOnline, setAllVehiclesOnline] = useState<VehicleDAO[]>([]);
-  const [allVehiclesOffline, setAllVehiclesOffline] = useState<VehicleDAO[]>(
+  const [allEnemies, setAllEnemies] = useState<EnemyDTO[]>([]);
+  const [allVehiclesOnline, setAllVehiclesOnline] = useState<VehicleDTO[]>([]);
+  const [allVehiclesOffline, setAllVehiclesOffline] = useState<VehicleDTO[]>(
     []
   );
 
@@ -45,11 +45,11 @@ const Main = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const separateVehiclesByStatus = (allVehicles: VehicleDAO[]): void => {
-    const tempAllVehiclesOnline: VehicleDAO[] = [];
-    const tempAllVehiclesOffline: VehicleDAO[] = [];
+  const separateVehiclesByStatus = (allVehicles: VehicleDTO[]): void => {
+    const tempAllVehiclesOnline: VehicleDTO[] = [];
+    const tempAllVehiclesOffline: VehicleDTO[] = [];
 
-    allVehicles.forEach((vehicle: VehicleDAO) => {
+    allVehicles.forEach((vehicle: VehicleDTO) => {
       vehicle.alive
         ? tempAllVehiclesOnline.push(vehicle)
         : tempAllVehiclesOffline.push(vehicle);

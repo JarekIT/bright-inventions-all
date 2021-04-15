@@ -1,10 +1,9 @@
-import { IPoint, IVehicle } from "../types";
-
-// init values
-const numbersOfVehiclesToGenerate = 100;
-
-// supporting methods for vehicle randomization
-// only for mocking data
+import { Vehicle } from "../../entity/vehicle.entity";
+import { IPoint } from "../../types/types";
+/*
+ * Supporting methods for vehicle randomization
+ * only for mocking data
+ */
 const firstNames = ["Falcon", "Wolf", "Tiger", "Fox", "Eagle"];
 const secondNames = ["Alfa", "Bravo", "Charlie", "Delta", "Echo"];
 const locations: IPoint[] = [
@@ -25,23 +24,22 @@ function randomLocation(): IPoint {
   return locations[Math.floor(Math.random() * locations.length)];
 }
 
-export const createVehicles = (): IVehicle[] => {
-  const allVehicles: IVehicle[] = [];
+export const createVehicles = (
+  numbersOfVehiclesToGenerate: number
+): Vehicle[] => {
+  const allVehicles: Vehicle[] = [];
 
   for (let i = 0; i < numbersOfVehiclesToGenerate; i++) {
     const startLocation: IPoint = randomLocation();
 
-    allVehicles.push({
-      id: i,
-      name: randomFirstName() + " " + randomSecondName() + " " + i,
-      lat: startLocation.lat,
-      lng: startLocation.lng,
-      alive: true,
-      previousLatLng: {
-        lat: startLocation.lat,
-        lng: startLocation.lng,
-      },
-    });
+    const newVehicle: Vehicle = new Vehicle(
+      i,
+      `${randomFirstName()} ${randomSecondName()} ${i}`,
+      startLocation.lat,
+      startLocation.lng
+    );
+
+    allVehicles.push(newVehicle);
   }
   return allVehicles;
 };

@@ -5,5 +5,6 @@ import { EnemiesController } from "./enemies.controller";
 @Module({
   providers: [EnemiesService],
   controllers: [EnemiesController],
+  exports: [EnemiesService],
 })
 export class EnemiesModule {}

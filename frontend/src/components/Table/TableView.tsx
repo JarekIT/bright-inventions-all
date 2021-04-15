@@ -2,12 +2,12 @@ import React, { memo } from "react";
 
 import _ from "lodash";
 
-import { VehicleDAO } from "../../interfaces/types";
+import { VehicleDTO } from "../../interfaces/types";
 
 interface TableViewProps {
   title: string;
   head: string[];
-  allVehiclesToView: VehicleDAO[];
+  allVehiclesToView: VehicleDTO[];
 }
 
 const TableView: React.FC<TableViewProps> = ({
@@ -29,9 +29,9 @@ const TableView: React.FC<TableViewProps> = ({
 
         <tbody>
           {allVehiclesToView &&
-            allVehiclesToView.map((vehicle: VehicleDAO) => {
+            allVehiclesToView.map((vehicle: VehicleDTO) => {
               return (
-                <tr key={vehicle.id}>
+                <tr key={vehicle.id} data-testid={`v-${vehicle.id}`}>
                   <td>{vehicle.id}</td>
                   <td>{vehicle.name}</td>
                   <td>{vehicle.lat.toFixed(4)}</td>

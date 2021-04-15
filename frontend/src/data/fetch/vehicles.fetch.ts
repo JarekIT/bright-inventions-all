@@ -2,12 +2,12 @@ import axios from "axios";
 
 import { backupApi } from "./backup.api";
 
-import { VehicleDAO } from "../../interfaces/types";
+import { VehicleDTO } from "../../interfaces/types";
 
 require("dotenv").config();
 
 export const fetchAllVehicles = async (
-  separateVehiclesByStatus: (allVehicles: VehicleDAO[]) => void,
+  separateVehiclesByStatus: (allVehicles: VehicleDTO[]) => void,
   isLoadedVehicles: boolean,
   setIsLoadedVehicles: React.Dispatch<React.SetStateAction<boolean>>
 ) => {

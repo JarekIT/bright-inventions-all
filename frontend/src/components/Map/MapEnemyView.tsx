@@ -2,12 +2,12 @@ import React, { memo } from "react";
 
 import { Marker, Circle } from "@react-google-maps/api";
 
-import { EnemyDAO, VehicleDAO } from "../../interfaces/types";
+import { EnemyDTO, VehicleDTO } from "../../interfaces/types";
 
 interface MapEnemyViewProps {
-  enemy: EnemyDAO;
+  enemy: EnemyDTO;
   setSelected: React.Dispatch<
-    React.SetStateAction<VehicleDAO | EnemyDAO | null>
+    React.SetStateAction<VehicleDTO | EnemyDTO | null>
   >;
 }
 

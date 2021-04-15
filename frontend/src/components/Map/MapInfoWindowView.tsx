@@ -3,12 +3,12 @@ import React from "react";
 import { InfoWindow } from "@react-google-maps/api";
 import _ from "lodash";
 
-import { EnemyDAO, VehicleDAO } from "../../interfaces/types";
+import { EnemyDTO, VehicleDTO } from "../../interfaces/types";
 
 interface MapInfoWindowViewProps {
-  selected: VehicleDAO | EnemyDAO;
+  selected: VehicleDTO | EnemyDTO;
   setSelected: React.Dispatch<
-    React.SetStateAction<VehicleDAO | EnemyDAO | null>
+    React.SetStateAction<VehicleDTO | EnemyDTO | null>
   >;
 }
 

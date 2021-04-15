@@ -3,13 +3,13 @@ export interface IPoint {
   lng: number;
 }
 
-export interface EnemyDAO extends IPoint {
+export interface EnemyDTO extends IPoint {
   id: number;
   name: string;
   shotRange: number;
 }
 
-export interface VehicleDAO extends IPoint {
+export interface VehicleDTO extends IPoint {
   id: number;
   name: string;
   alive: boolean;

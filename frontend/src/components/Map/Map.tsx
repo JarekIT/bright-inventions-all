@@ -6,14 +6,14 @@ import MapVehicleView from "./MapVehicleView";
 import MapEnemyView from "./MapEnemyView";
 import MapInfoWindowView from "./MapInfoWindowView";
 
-import { EnemyDAO, IPoint, VehicleDAO } from "../../interfaces/types";
+import { EnemyDTO, IPoint, VehicleDTO } from "../../interfaces/types";
 
 require("dotenv").config();
 
 interface MapProps {
-  allVehiclesOnline: VehicleDAO[];
-  allVehiclesOffline: VehicleDAO[];
-  allEnemies: EnemyDAO[];
+  allVehiclesOnline: VehicleDTO[];
+  allVehiclesOffline: VehicleDTO[];
+  allEnemies: EnemyDTO[];
   filter: string;
 }
 
@@ -47,7 +47,7 @@ const Map: React.FC<MapProps> = ({
   });
 
   // state to display Marker details
-  const [selected, setSelected] = useState<VehicleDAO | EnemyDAO | null>(null);
+  const [selected, setSelected] = useState<VehicleDTO | EnemyDTO | null>(null);
 
   // filter methods
   const isFilterActiveMemo: boolean = useMemo(() => {
@@ -55,13 +55,13 @@ const Map: React.FC<MapProps> = ({
   }, [filter]);
 
   const isNameMatchToFilter = (
-    vehicle: VehicleDAO,
+    vehicle: VehicleDTO,
     filter: string
   ): boolean => {
     return vehicle.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1;
   };
 
-  const isVehicleVisible = (vehicle: VehicleDAO, filter: string): boolean => {
+  const isVehicleVisible = (vehicle: VehicleDTO, filter: string): boolean => {
     return isFilterActiveMemo || isNameMatchToFilter(vehicle, filter);
   };
   const isVehicleVisibleCallback = useCallback(isVehicleVisible, [
@@ -80,7 +80,7 @@ const Map: React.FC<MapProps> = ({
       zoom={5}
     >
       {allEnemies &&
-        allEnemies.map((enemy: EnemyDAO) => (
+        allEnemies.map((enemy: EnemyDTO) => (
           <MapEnemyView
             key={`e-${enemy.id}`}
             enemy={enemy}
@@ -89,7 +89,7 @@ const Map: React.FC<MapProps> = ({
         ))}
 
       {allVehiclesOnline &&
-        allVehiclesOnline.map((vehicle: VehicleDAO) => {
+        allVehiclesOnline.map((vehicle: VehicleDTO) => {
           return (
             isVehicleVisibleCallback(vehicle, filter) && (
               <MapVehicleView
@@ -102,7 +102,7 @@ const Map: React.FC<MapProps> = ({
         })}
 
       {allVehiclesOffline &&
-        allVehiclesOffline.map((vehicle: VehicleDAO) => {
+        allVehiclesOffline.map((vehicle: VehicleDTO) => {
           return (
             isVehicleVisibleCallback(vehicle, filter) && (
               <MapVehicleView

@@ -2,11 +2,11 @@ import React, { memo } from "react";
 
 import TableView from "./TableView";
 
-import { VehicleDAO } from "../../interfaces/types";
+import { VehicleDTO } from "../../interfaces/types";
 
 interface TableProps {
-  allVehiclesOnline: VehicleDAO[];
-  allVehiclesOffline: VehicleDAO[];
+  allVehiclesOnline: VehicleDTO[];
+  allVehiclesOffline: VehicleDTO[];
   filter: string;
 }
 
@@ -16,10 +16,10 @@ const Table: React.FC<TableProps> = ({
   filter,
 }) => {
   const getFilteredVehicles = (
-    allVehicles: VehicleDAO[],
+    allVehicles: VehicleDTO[],
     filter: string
-  ): VehicleDAO[] => {
-    return [...allVehicles].filter((vehicle: VehicleDAO) => {
+  ): VehicleDTO[] => {
+    return [...allVehicles].filter((vehicle: VehicleDTO) => {
       return (
         filter === "" ||
         vehicle.name.toLowerCase().indexOf(filter.toLowerCase()) !== -1
