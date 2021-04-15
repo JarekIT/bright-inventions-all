@@ -6,7 +6,6 @@
   "dependencies": {
     "@react-google-maps/api": "^2.1.1",
     "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
@@ -45,8 +44,11 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.6",
     "@types/lodash": "^4.14.168",
     "@types/react": "^17.0.3",
-    "prettier": "2.2.1"
+    "@types/react-test-renderer": "^17.0.1",
+    "prettier": "2.2.1",
+    "react-test-renderer": "^17.0.2"
   }
 }
